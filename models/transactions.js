@@ -16,5 +16,13 @@ module.exports = [
         amount: 300,
         isExpense: true,
 
+    },
+    {
+        id: transactionCounter++,
+        name: "Groceries",
+        date: "04/19",
+        amount: 100,
+        isExpense: true,
+
     }
 ];
