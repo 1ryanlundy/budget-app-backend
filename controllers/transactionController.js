@@ -4,14 +4,6 @@ const transactionsArray = require("../models/transactions")
 const { transactionValidator } = require("../models/validators")
 
 
-// create: add a transaction
-transactions.post("/", transactionValidator, (req, res) => {
-    console.log("POST /transactions", req.body);
-
-    transactionsArray.push(req.body);
-    res.status(201).json(transactionsArray[transactionsArray.length - 1]);
-})
-
 // index: all transactions
 transactions.get("/", (req, res) => {
     res.json(transactionsArray);
@@ -28,6 +20,16 @@ transactions.get("/:index", (req, res) => {
         res.status(404).json({ "error": "Transaction Not Found" })
     }
 });
+
+// create: add a transaction
+transactions.post("/", transactionValidator, (req, res) => {
+    console.log("POST /transactions", req.body);
+
+    transactionsArray.push(req.body);
+    res.status(201).json(transactionsArray[transactionsArray.length - 1]);
+})
+
+
 
 // update: update transaction
 transactions.put("/:index", transactionValidator, (req, res) => {
